@@ -42,24 +42,24 @@ export const LCSVisualizer = () => {
 
   return (
     <div className="space-y-6">
-      <Card className="p-4 bg-muted/50">
-        <div className="flex flex-wrap items-center gap-4">
+      <Card className="p-3 sm:p-4 bg-muted/50">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
-            <label className="text-sm text-muted-foreground">Text 1:</label>
+            <label className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">Text 1:</label>
             <Input
               value={text1}
               onChange={(e) => setText1(e.target.value.toUpperCase())}
-              className="w-32"
+              className="w-28 sm:w-32"
               maxLength={10}
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <label className="text-sm text-muted-foreground">Text 2:</label>
+            <label className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">Text 2:</label>
             <Input
               value={text2}
               onChange={(e) => setText2(e.target.value.toUpperCase())}
-              className="w-32"
+              className="w-28 sm:w-32"
               maxLength={10}
             />
           </div>
@@ -78,29 +78,29 @@ export const LCSVisualizer = () => {
             </Button>
           </div>
 
-          <div className="flex-1 min-w-[200px] max-w-xs">
+          <div className="flex-1 min-w-[150px] max-w-xs">
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Speed:</span>
+              <span className="text-xs sm:text-sm text-muted-foreground">Speed:</span>
               <Slider value={speed} onValueChange={setSpeed} max={100} min={10} step={10} className="flex-1" />
             </div>
           </div>
 
-          <div className="text-sm text-muted-foreground">
+          <div className="text-xs sm:text-sm text-muted-foreground">
             Step: {currentStep + 1} / {steps.length}
           </div>
         </div>
       </Card>
 
-      <Card className="p-6 bg-card/50">
-        <h3 className="text-lg font-semibold mb-4">LCS DP Table</h3>
-        <div className="overflow-x-auto">
-          <table className="border-collapse">
+      <Card className="p-3 sm:p-6 bg-card/50">
+        <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">LCS DP Table</h3>
+        <div className="overflow-x-auto -mx-3 sm:mx-0 px-3 sm:px-0">
+          <table className="min-w-full border-collapse text-xs sm:text-sm">
             <thead>
               <tr>
-                <th className="border border-border p-3 bg-muted"></th>
-                <th className="border border-border p-3 bg-muted"></th>
+                <th className="border border-border p-1.5 sm:p-3 bg-muted sticky left-0 z-10"></th>
+                <th className="border border-border p-1.5 sm:p-3 bg-muted"></th>
                 {text2.split("").map((char, i) => (
-                  <th key={i} className="border border-border p-3 bg-muted font-mono">
+                  <th key={i} className="border border-border p-1.5 sm:p-3 bg-muted font-mono min-w-[32px] sm:min-w-[48px]">
                     {char}
                   </th>
                 ))}
@@ -109,7 +109,7 @@ export const LCSVisualizer = () => {
             <tbody>
               {currentState?.dp.map((row, i) => (
                 <tr key={i}>
-                  <td className="border border-border p-3 bg-muted font-mono">
+                  <td className="border border-border p-1.5 sm:p-3 bg-muted font-mono sticky left-0 z-10">
                     {i === 0 ? "" : text1[i - 1]}
                   </td>
                   {row.map((cell, j) => {
@@ -117,7 +117,7 @@ export const LCSVisualizer = () => {
                     return (
                       <td
                         key={j}
-                        className={`border border-border p-3 text-center transition-all duration-500 ${
+                        className={`border border-border p-1.5 sm:p-3 text-center transition-all duration-500 min-w-[32px] sm:min-w-[48px] ${
                           isCurrent ? "bg-current/30 scale-110 font-bold" : "bg-background"
                         }`}
                       >

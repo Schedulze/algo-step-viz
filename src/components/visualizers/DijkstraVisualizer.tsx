@@ -86,9 +86,9 @@ export const DijkstraVisualizer = () => {
         </div>
       </Card>
 
-      <Card className="p-6 bg-card/50">
-        <div className="relative w-full h-[400px] bg-background/50 rounded-lg border border-border overflow-hidden">
-          <svg className="w-full h-full">
+      <Card className="p-3 sm:p-6 bg-card/50">
+        <div className="relative w-full h-[250px] sm:h-[400px] bg-background/50 rounded-lg border border-border overflow-hidden">
+          <svg className="w-full h-full" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet">
             {edges.map((edge, idx) => {
               const fromNode = nodes.find((n) => n.id === edge.from);
               const toNode = nodes.find((n) => n.id === edge.to);
@@ -160,13 +160,13 @@ export const DijkstraVisualizer = () => {
         </div>
       </Card>
 
-      <Card className="p-4 bg-primary/10 border-primary/20">
-        <h3 className="font-semibold mb-2">Shortest Distances from A:</h3>
-        <div className="grid grid-cols-4 gap-2">
+      <Card className="p-3 sm:p-4 bg-primary/10 border-primary/20">
+        <h3 className="font-semibold mb-2 text-sm sm:text-base">Shortest Distances from A:</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {nodes.map((node) => {
             const dist = currentState.distances.get(node.id);
             return (
-              <div key={node.id} className="text-sm">
+              <div key={node.id} className="text-xs sm:text-sm">
                 <span className="text-muted-foreground">{node.label}:</span>{" "}
                 <span className="font-mono">{dist === Infinity ? "∞" : dist}</span>
               </div>
